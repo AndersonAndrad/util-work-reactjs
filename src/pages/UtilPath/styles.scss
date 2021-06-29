@@ -1,0 +1,148 @@
+body {
+  background: #f8f8f8;
+  font-weight: bold;
+}
+
+.content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .inputs {
+    display: flex ;
+    justify-content: center;
+    gap: 50px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    input {
+      width: 900px;
+      height: 35px;
+      margin-bottom: 20px;
+      border: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .mediumInput {
+      width: 300px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .clearButton {
+      padding: 10px;
+      width: 100px;
+      height: 40px;
+      border: none;
+      background: none;
+      color: #000;
+
+
+      &:hover {
+        background: #e2e2e2;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    }
+
+    .confirmationButton {
+      padding: 10px;
+      width: 100px;
+      height: 40px;
+      border: none;
+      background: #835afd;
+      color: #fff;
+      border-radius: 3px;
+      font-weight: bold;
+
+      &:hover {
+        background: #835afd;
+        border-radius: 3px;
+        cursor: pointer;
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+  .paths {
+    width: 40%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+    .headerPaths {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .contentPath{
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      margin-top: 20px;
+      padding: 10px;
+      margin-bottom: 20px;
+      background: #e3e3e3;
+
+      & + .contentPath {
+        margin-top: 0px;
+        margin-bottom: 15px;
+      }
+    }
+
+    div {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+
+      .clearButton {
+        padding: 10px;
+        width: 100px;
+        height: 40px;
+        border: none;
+        background: none;
+        color: #000;
+  
+  
+        &:hover {
+          background: #e2e2e2;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+      }
+
+      button {
+        padding: 10px;
+        width: 100px;
+        height: 40px;
+        border: none;
+        background: #835afd;
+        color: #fff;
+        border-radius: 3px;
+        font-weight: bold;
+  
+        &:hover {
+          background: #835afd;
+          border-radius: 3px;
+          cursor: pointer;
+          filter: brightness(0.8);
+        } 
+      }
+    }
+
+   
+  }
+}

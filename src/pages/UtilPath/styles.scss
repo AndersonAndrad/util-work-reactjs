@@ -1,6 +1,7 @@
 body {
   background: #f8f8f8;
   font-weight: bold;
+  font-family: Poppins, Roboto, 'sans-serif';
 }
 
 .content {
@@ -77,6 +78,9 @@ body {
     .buttons {
       display: flex;
       gap: 16px;
+      font-weight: bold;
+      font-family: Poppins, Roboto, 'sans-serif';
+
     }
     
     .clearButton {
@@ -86,6 +90,9 @@ body {
       border: none;
       background: none;
       color: #000;
+      font-weight: bold;
+      font-family: Poppins, Roboto, 'sans-serif';
+
 
 
       &:hover {
@@ -104,6 +111,8 @@ body {
       color: #fff;
       border-radius: 3px;
       font-weight: bold;
+      font-family: Poppins, Roboto, 'sans-serif';
+
 
       &:hover {
         background: #835afd;
@@ -155,6 +164,9 @@ body {
         border: none;
         background: none;
         color: #000;
+        font-weight: bold;
+        font-family: Poppins, Roboto, 'sans-serif';
+
   
   
         &:hover {
@@ -173,7 +185,8 @@ body {
         color: #fff;
         border-radius: 3px;
         font-weight: bold;
-  
+        font-family: Poppins, Roboto, 'sans-serif';
+        
         &:hover {
           background: #835afd;
           border-radius: 3px;

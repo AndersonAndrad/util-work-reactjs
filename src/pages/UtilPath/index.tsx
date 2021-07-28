@@ -1,52 +1,44 @@
 // dependencies
 import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
-
 // images
 import LogoGitHub from '../../assets/GitHub-Mark-120px-plus.png'
-
 // styles
 import './styles.scss'
-
 // types
 interface IFinalUrl {
-  id: string;
-  url: string;
+  id: string
+  url: string
 }
 
-export default function UtilPage(){
-  const [ hash, setHash ] = useState('')
-  const [ url, setUrl ] = useState('')
-  const [ finalUrl, setFinalUrl ] = useState<IFinalUrl[]>([])
+export default function UtilPage () {
+  const [hash, setHash] = useState( '' )
+  const [url, setUrl] = useState( '' )
+  const [finalUrl, setFinalUrl] = useState<IFinalUrl[]>( [] )
 
-  function handleClearHash(){
-    setHash('')
+  function handleClearHash () {
+    setHash( '' )
   }
 
-  function handleClearUrl(){
-    setUrl('')
+  function handleClearList () {
+    setFinalUrl( [] )
   }
 
-  function handleClearAll(){
-    setHash('')
-    setUrl('')
-    setFinalUrl([])
+  function handleCreatePath () {
+    setFinalUrl( [{ id: uuid(), url: `${url.slice( 34 )}#${hash.slice( 0, 10 )}` }, ...finalUrl] )
+    setUrl( '' )
   }
 
-  function handleCreatePath(){
-    setFinalUrl([...finalUrl, {id: uuid(), url:`${url.slice(34)}#${hash.slice(0,10)}`}])
+  function handleCopyToClipBoard () {
+    let textToCopy = ''
+    finalUrl.map( ( { url }: IFinalUrl ): void => {
+      textToCopy = url + `\n\n` + textToCopy
+    } )
+
+    navigator.clipboard.writeText( textToCopy )
   }
 
-  function handleCopyToClipBoard(){
-    let  textToCopy = ''
-    finalUrl.map(({url}: IFinalUrl): void => {
-      textToCopy = url  + `\n\n` + textToCopy
-    })
-
-    navigator.clipboard.writeText(textToCopy)
-  }
- 
-  return(
+  return (
     <div className='content'>
       <div className='presentation'>
         <img src="https://avatars.githubusercontent.com/andersonandrad" alt="github.com/andersonandrad" />
@@ -63,15 +55,14 @@ export default function UtilPage(){
       </div>
       <div className='inputs'>
         <div>
-          <input type="text" className='mediumInput' onChange={event => setHash(event.target.value)} value={hash}  placeholder='Ex: cacd93256a06a32001c467ed29734e946a9b8'/>
+          <input type="text" className='mediumInput' onChange={event => setHash( event.target.value )} value={hash} placeholder='Ex: cacd93256a06a32001c467ed29734e946a9b8' />
           <div className='buttons'>
             <button className='clearButton' onClick={handleClearHash}>Clear hash</button>
           </div>
         </div>
         <div>
-          <input type="text" onChange={event => setUrl(event.target.value)} value={url} placeholder='Ex: https://system.intranet.bb.com.br/rest-of-url'/>
+          <input type="text" onChange={event => setUrl( event.target.value )} value={url} placeholder='Ex: https://system.intranet.bb.com.br/rest-of-url' />
           <div className='buttons'>
-            <button className='clearButton' onClick={handleClearUrl}>Clear path</button>
             <button className='confirmationButton' onClick={handleCreatePath}>Add</button>
           </div>
         </div>
@@ -81,19 +72,19 @@ export default function UtilPage(){
           <div className='headerPaths'>
             <span>Quantity {finalUrl.length}</span>
             <div>
-                <button className='clearButton' onClick={handleClearAll}>Clear all</button>
-                <button onClick={handleCopyToClipBoard}>Copy</button>
+              <button className='clearButton' onClick={handleClearList}>Clear list</button>
+              <button onClick={handleCopyToClipBoard}>Copy</button>
             </div>
           </div>
         )}
-        
-        {finalUrl.map(url => {
+
+        {finalUrl.map( url => {
           return (
             <div key={url.id} className='contentPath'>
               {url.url}
             </div>
           )
-        })}
+        } )}
       </div>
     </div>
   )

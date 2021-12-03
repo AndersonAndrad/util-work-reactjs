@@ -1,13 +1,11 @@
-import React from 'react';
-
 import UtilPath from './pages/UtilPath'
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <UtilPath/>
+      <UtilPath />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

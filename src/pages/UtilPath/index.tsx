@@ -7,6 +7,8 @@ interface IFinalUrl {
   id: string
   url: string
   task: string
+  typeFile: string
+  isCopied: boolean
 }
 
 export default function UtilPage () {
@@ -27,8 +29,16 @@ export default function UtilPage () {
     setFinalUrl( [] )
   }
 
+  function setWithCopied ( id: string ) {
+    const newFinalUrl = [...finalUrl]
+    const index = newFinalUrl.findIndex( item => item.id === id )
+    newFinalUrl[index].isCopied = true
+    setFinalUrl( newFinalUrl )
+  }
+
   function handleCreatePath () {
-    setFinalUrl( [{ id: uuid(), url: `${url.slice( 34 )}#${hash.slice( 0, 10 )}`, task }, ...finalUrl] )
+    const newURl = `${url.slice( 34 )}#${hash.slice( 0, 10 )}`
+    setFinalUrl( [{ id: uuid(), url: newURl, task, typeFile: url.slice( url.length - 10 ).split( '.' )[1], isCopied: false }, ...finalUrl] )
     setUrl( '' )
   }
 
@@ -83,18 +93,20 @@ export default function UtilPage () {
         <table>
           <thead>
             <tr>
+              <th>Type</th>
               <th>URL</th>
               <th>Task</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {finalUrl.map( ( { id, url, task }: IFinalUrl ) => (
+            {finalUrl.map( ( { id, url, task, typeFile, isCopied }: IFinalUrl ) => (
               <tr key={id}>
+                <td>{typeFile}</td>
                 <td><input type="text" value={url} onChange={() => { }} /></td>
                 <td>{task}</td>
                 <td>
-                  <button className={styles.actionButton} onClick={() => { navigator.clipboard.writeText( url ) }}>Copy Url</button>
+                  <button className={isCopied ? styles.copiedConfirmed : styles.actionButton} onClick={() => [navigator.clipboard.writeText( url ), setWithCopied( id )]}>Copy Url</button>
                   <button className={styles.actionButton} onClick={() => { navigator.clipboard.writeText( task ) }}>Copy Task</button>
                 </td>
               </tr>

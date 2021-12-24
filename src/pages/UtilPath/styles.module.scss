@@ -167,6 +167,25 @@
   }
 }
 
+.copiedConfirmed {
+  width: 13%;
+  height: 40px;
+  border-radius: 0.2rem;
+  border: 1px solid #ccc;
+  background: var(--green-500);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.2s;
+  border: none;
+  margin: 0.2rem;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
 .clearButton {
   width: 13%;
   height: 40px;
